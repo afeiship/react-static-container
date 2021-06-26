@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import filterProps from '@jswork/filter-react-props';
 import deepEqual from 'deep-equal';
 
-interface Props {
+type Props = {
   as?: any;
   dependencies?: any[];
   shouldUpdate?: boolean;
-}
+} & React.HTMLProps<Element>;
 
 const CLASS_NAME = 'react-static-container';
 
