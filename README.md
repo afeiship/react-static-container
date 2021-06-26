@@ -12,11 +12,11 @@ npm install -S @jswork/react-static-container
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | Default value.                        |
-| onChange  | func   | false    | noop    | The change handler.                   |
+| Name         | Type  | Required | Default        | Description                        |
+| ------------ | ----- | -------- | -------------- | ---------------------------------- |
+| as           | any   | false    | React.Fragment | The static node name.              |
+| dependencies | array | false    | []             | The dependencies of the component. |
+| shouldUpdate | bool  | false    | false          | The default should update.         |
 
 
 ## usage
@@ -32,7 +32,7 @@ npm install -S @jswork/react-static-container
   ```
 2. import js
   ```js
-  import React from 'react';
+  import React, { useState } from 'react';
   import ReactStaticContainer from '../@jswork/boilerplate-react-component';
   import styled from 'styled-components';
 
@@ -42,9 +42,23 @@ npm install -S @jswork/react-static-container
   `;
 
   export default (props: any) => {
+    const [count, setCount] = useState(10);
+    const [id, setId] = useState(0);
     return (
       <Container>
-        <ReactStaticContainer />
+        <button onClick={(e) => setCount(count + 1)}>Change Counter</button>
+        <button onClick={(e) => setId(Date.now())}>Change Id</button>
+        <p>
+          I can not change.(except the first time.)
+          <ReactStaticContainer>{count}</ReactStaticContainer>
+        </p>
+        <p>
+          I can change.(Because i have dependencies changed.)
+          <ReactStaticContainer dependencies={[id]}>{count}</ReactStaticContainer>
+        </p>
+        <p>
+          <strong>I can change {count}</strong>
+        </p>
       </Container>
     );
   };
