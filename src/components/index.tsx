@@ -43,7 +43,7 @@ export default class ReactStaticContainer extends Component<Props> {
   }
 
   render() {
-    const { as, ...props } = this.props;
+    const { as, dependencies, shouldUpdate, ...props } = this.props;
     return React.createElement(as, props);
   }
 }
