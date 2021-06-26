@@ -6,7 +6,7 @@ type Props = {
   as?: any;
   dependencies?: any[];
   shouldUpdate?: boolean;
-} & React.HTMLProps<Element>;
+} & React.HTMLProps<Element> & any;
 
 const CLASS_NAME = 'react-static-container';
 
