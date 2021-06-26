@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import filterProps from '@jswork/filter-react-props';
 import deepEqual from 'deep-equal';
 
 type Props = {
@@ -45,7 +44,6 @@ export default class ReactStaticContainer extends Component<Props> {
 
   render() {
     const { as, ...props } = this.props;
-    const theProps = filterProps(props);
-    return React.createElement(as, theProps);
+    return React.createElement(as, props);
   }
 }
