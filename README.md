@@ -12,11 +12,11 @@ npm install -S @jswork/react-static-container
 ```
 
 ## properties
-| Name         | Type  | Required | Default        | Description                        |
-| ------------ | ----- | -------- | -------------- | ---------------------------------- |
-| as           | any   | false    | React.Fragment | The static node name.              |
-| dependencies | array | false    | []             | The dependencies of the component. |
-| shouldUpdate | bool  | false    | false          | The default should update.         |
+| Name    | Type  | Required | Default        | Description                |
+| ------- | ----- | -------- | -------------- | -------------------------- |
+| as      | any   | false    | React.Fragment | The static node name.      |
+| deps    | array | false    | []             | The deps of the component. |
+| dynamic | bool  | false    | false          | The default should update. |
 
 
 ## usage
@@ -53,8 +53,8 @@ npm install -S @jswork/react-static-container
           <ReactStaticContainer>{count}</ReactStaticContainer>
         </p>
         <p>
-          I can change.(Because i have dependencies changed.)
-          <ReactStaticContainer dependencies={[id]}>{count}</ReactStaticContainer>
+          I can change.(Because i have deps changed.)
+          <ReactStaticContainer deps={[id]}>{count}</ReactStaticContainer>
         </p>
         <p>
           <strong>I can change {count}</strong>
