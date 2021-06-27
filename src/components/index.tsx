@@ -5,7 +5,7 @@ import deepEqual from 'deep-equal';
 type Props = {
   as?: any;
   deps?: any[];
-  shouldUpdate?: boolean;
+  dynamic?: boolean;
 } & React.HTMLProps<Element> & any;
 
 const CLASS_NAME = 'react-static-container';
@@ -25,25 +25,25 @@ export default class ReactStaticContainer extends Component<Props> {
     /**
      * The default should update.
      */
-    shouldUpdate: PropTypes.bool
+    dynamic: PropTypes.bool
   };
 
   static defaultProps = {
     as: React.Fragment,
     deps: [],
-    shouldUpdate: false
+    dynamic: false
   };
 
   shouldComponentUpdate(inProps) {
-    const { deps, shouldUpdate } = inProps;
+    const { deps, dynamic } = inProps;
     if (!deepEqual(deps, this.props.deps)) {
       return true;
     }
-    return shouldUpdate;
+    return dynamic;
   }
 
   render() {
-    const { as, deps, shouldUpdate, ...props } = this.props;
+    const { as, deps, dynamic, ...props } = this.props;
     return React.createElement(as, props);
   }
 }
