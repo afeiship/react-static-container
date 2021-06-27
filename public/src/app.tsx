@@ -19,8 +19,8 @@ export default (props: any) => {
         <ReactStaticContainer>{count}</ReactStaticContainer>
       </p>
       <p>
-        I can change.(Because i have dependencies changed.)
-        <ReactStaticContainer dependencies={[id]}>{count}</ReactStaticContainer>
+        I can change.(Because i have deps changed.)
+        <ReactStaticContainer deps={[id]}>{count}</ReactStaticContainer>
       </p>
       <p>
         <strong>I can change {count}</strong>

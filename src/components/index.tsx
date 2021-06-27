@@ -4,7 +4,7 @@ import deepEqual from 'deep-equal';
 
 type Props = {
   as?: any;
-  dependencies?: any[];
+  deps?: any[];
   shouldUpdate?: boolean;
 } & React.HTMLProps<Element> & any;
 
@@ -19,9 +19,9 @@ export default class ReactStaticContainer extends Component<Props> {
      */
     as: PropTypes.any,
     /**
-     * The dependencies of the component.
+     * The deps of the component.
      */
-    dependencies: PropTypes.array,
+    deps: PropTypes.array,
     /**
      * The default should update.
      */
@@ -30,20 +30,20 @@ export default class ReactStaticContainer extends Component<Props> {
 
   static defaultProps = {
     as: React.Fragment,
-    dependencies: [],
+    deps: [],
     shouldUpdate: false
   };
 
   shouldComponentUpdate(inProps) {
-    const { dependencies, shouldUpdate } = inProps;
-    if (!deepEqual(dependencies, this.props.dependencies)) {
+    const { deps, shouldUpdate } = inProps;
+    if (!deepEqual(deps, this.props.deps)) {
       return true;
     }
     return shouldUpdate;
   }
 
   render() {
-    const { as, dependencies, shouldUpdate, ...props } = this.props;
+    const { as, deps, shouldUpdate, ...props } = this.props;
     return React.createElement(as, props);
   }
 }
